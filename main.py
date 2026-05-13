@@ -37,11 +37,13 @@ def get_proveedor_bebida(bebida_id:int):
     proveedor = db["proveedores"].find_one({"bebidas_suministradas":bebida_id},{"_id":0})   
     return proveedor or {}  
 
+
 @app.post("/proveedores")
 def post_proveedor(datos:dict):
     datos["fecha_registro"]= datetime.now().isoformat()
     db["proveedores"].insert_one(datos)
     return {"mensaje":"Proveedor registrado"}
+
 
 
 @app.get('/bares/{bar_id}/comentarios')
