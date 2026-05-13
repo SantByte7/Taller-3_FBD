@@ -28,6 +28,7 @@ db = client["parranderos"]
 def inicio():
     return {"Estado": "API funcionando correctamente"}
 
+
 @app.get("/proveedores")
 def get_proveedores():
     return list(db["proveedores"].find({}, {"_id":0}))
